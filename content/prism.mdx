@@ -1,0 +1,128 @@
+---
+title: 'react-prism-rendererの導入 その１'
+subtitle: 
+date: 2020-08-29
+description: 
+learning_Point: ['react-prism-rendererの基本的な使い方']
+img: 
+tags: ['gatsby', 'react']
+category: 'gatsby'
+---
+
+<Title>ハイライトテーマ</Title>
+
+`prism-react-renderer`とはコードハイライトを組み込むためのモジュールである。
+
+ハイライトしたいコードを`props`としていれることで、コードがハイライトされて表示される。
+
+具体例を見てみよう。デフォルトの設定では以下のような表示になる。
+
+
+```jsx live=true
+() => {
+const exampleCode = `
+const Home = () => {
+  const text = 'Hello Nibu !';
+  console.log(text);
+}  
+
+export default Home
+`;　　　
+
+return(
+  <Highlight {...defaultProps} code={exampleCode} language="jsx">
+    {({　className, style, tokens, getLineProps, getTokenProps }) =>{ 
+
+      return(
+      <pre className={className} style={style}>  
+        {tokens.map((line, i) => (
+          <div {...getLineProps({ line, key: i })}>
+            {line.map((token, key) => (
+              <span {...getTokenProps({ token, key })} />
+            ))}
+          </div>
+        ))}
+      </pre>
+    )}}
+  </Highlight>
+)}
+
+```
+
+
+`Highlight`コンポーネントにおいて、`code`という`props`にハイライトしたいコードを挿入し、`language`でコードの言語を指定している。
+
+`defaultProps`はオブジェクトであり、中には`Prismjs`ライブラリである`Prism`とデフォルトテーマである`theme`が入っている。
+
+この`theme`はオブジェクトで、中にコード全体の背景色とフォントカラーを指定した`plain`とシンタックスハイライトの色分けを指定した`styles`が入っている。
+
+つまり、テーマをアレンジしたい場合は、以下のように`defaultProps`の`Prism`だけを指定すればよい。
+
+```jsx
+ <Highlight Prism={Prism} code={exampleCode} language="jsx">省略 </Highlight>
+ ```
+ ハイライトテーマは12個用意されており、インポートして、`theme`として入れることでそのテーマが適用される。
+ `defaultProps`の中にあるデフォルトテーマ`theme`は`duotoneDark`という名前で登録されている。
+
+ ```jsx
+ import Highlight, { Prism }  from 'prism-react-renderer'
+ import nightOwl from 'prism-react-renderer/themes/nightOwl';
+
+<Highlight  Prism={Prism} theme={nightOwl} /> ・・・
+```
+実際にテーマを`nightOwl`に変えてみた。
+
+```jsx live=true
+() => {
+const exampleCode = `
+const Home = () => {
+  const text = 'Hello Nibu !';
+  console.log(text);
+}  
+
+export default Home
+`;　　　
+
+return(
+  <Highlight Prism={defaultProps.Prism} theme={nightOwl} code={exampleCode} language="jsx">
+    {({　className, style, tokens, getLineProps, getTokenProps }) =>{ 
+      return(
+      <pre className={className} style={style}>  
+        {tokens.map((line, i) => (
+          <div {...getLineProps({ line, key: i })}>
+            {line.map((token, key) => (
+              <span {...getTokenProps({ token, key })} />
+            ))}
+          </div>
+        ))}
+      </pre>
+    )}}
+  </Highlight>
+)}
+```
+
+<Title>getter 関数</Title>
+
+getter 関数とは`getLineProps`と`getTokenProps`のことである。
+
+```jsx
+<pre className={className} style={style}>  
+    {tokens.map((line, i) => ( 
+      <div {...getLineProps({ line, key: i })}>
+        {line.map((token, key) => (
+          <span {...getTokenProps({ token, key })} />
+        ))}
+      </div>
+    ))}
+</pre>
+```
+`Line`をコードの行、`Token`をその行にある文字列の最小単位(トークン)と考える。
+
+上記のコードの意味について考えよう。
+
+`tokens`はオブジェクトを持った配列で、各オブジェクト(上記のline)はコードの各行に対応している。
+そのオブジェクトの中に、その行にあるトークン(上記のtoken)が小分けに格納されている。
+
+最後に、`getLineProps`と`getTokenProps`で`line`や`token`を受け取ってクラス名、スタイルなどを生成したものをスプレッド演算子で`props`として代入している。。
+
+つまり、コードの各行に対して、シンタックスハイライトを施したトークンたちを並べているというのが上記の意味である。

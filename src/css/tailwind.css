@@ -1,0 +1,17 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+code {
+  @apply m-1 text-gray-800 bg-blue-100 p-1;
+}
+
+.gatsby-highlight pre[class*="language-"]::before {
+  @apply absolute ml-10 px-2 uppercase tracking-wide rounded-b font-light text-xs
+}
+
+.transition_ease_in {
+  @apply transition duration-150 ease-in-out
+}
+
+@import "tailwindcss/utilities";
