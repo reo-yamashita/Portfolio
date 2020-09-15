@@ -140,8 +140,7 @@ const SEO: React.FC<TypeSEO> = ({ title, desc, pathname, article }) => (
             <meta name="twitter:description" content={seo.description} />
             <meta name="twitter:image" content={seo.image} />
             
-            
-            </Helmet>
+          </Helmet>
         </>
       );
     }}

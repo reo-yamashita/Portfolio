@@ -3,7 +3,6 @@ import {  useStaticQuery, graphql } from 'gatsby'
 import Layout from '@layouts/main-layout'
 import SEO from '@components/SEO'
 import Img from 'gatsby-image'
-import Video from '@components/video'
 
 const Myself: React.FC = () => {
   
@@ -14,26 +13,26 @@ const Myself: React.FC = () => {
   ]
   
   const data = useStaticQuery(graphql`
-query myselfPic {
-  logo1: file(relativePath: {eq: "images/logo1.png"}) {
-    childImageSharp {
-      fluid(quality: 50, maxWidth: 220) {
-        ...GatsbyImageSharpFluid
-      }
+    query myselfPic {
+      logo1: file(relativePath: {eq: "images/logo1.png"}) {
+        childImageSharp {
+          fluid(quality: 50, maxWidth: 220) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
+        hinata: file(relativePath: {eq: "images/hinata.jpg"}) {
+        childImageSharp {
+          fluid( quality: 50, maxWidth: 270) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      },
     }
-  },
-    hinata: file(relativePath: {eq: "images/hinata.jpg"}) {
-    childImageSharp {
-      fluid( quality: 100, maxWidth: 270) {
-        ...GatsbyImageSharpFluid
-      }
-    }
-  },
-}
-`)
+  `)
 
   return (
-    <Layout>
+  <Layout>
       <SEO
       title={'About me'}
       desc={'自己紹介'}
@@ -75,6 +74,16 @@ query myselfPic {
                 JavaScript / HTML / CSS (SASS) 周辺も得意です。 <br/>
                 このブログはGatsbyJSのテンプレートテーマを使用せずに、デザイン、スタイリングから構築、デプロイまですべて<span className="bg-indigo-100 px-1">なーこぉ</span>が作りました。
               </p>
+              <div className="mt-4 text-red-700 transition-all duration-200 py-1 px-3
+              hover:bg-indigo-700 hover:text-white inline-block rounded-lg">
+                <a href="https://github.com/nako0215/new-nako-blog"  target="_blank"  rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" 
+                    className="h-6 inline-block" >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                  <p className="leading-none ml-2 h-4 text-sm inline-block">コードはこちら</p>
+                </a>
+              </div>
             </div>
             <div className="ml-8 hidden sm:block flex-grow">
               <div className="list-disc flex flex-wrap space-x-6 sm:pl-8 my-8 ">
@@ -95,7 +104,7 @@ query myselfPic {
         </div>
       </div>
       <div className="w-full sm:w-10/12 mx-auto px-4 md:pl-40 md:pr-8 max-w-6xl">
-        <div className="mb-12 fadeIn_animation mx-auto">
+        <div className="mb-8 fadeIn_animation mx-auto">
           <div className="pt-4">
             <div className="max-w-full">
               <h3 className="text-2xl  font-semibold text-gray-800">I'm into ...</h3>
@@ -115,24 +124,19 @@ query myselfPic {
                 </div>
               </div>
             </div>
-            <div className="sm:px-3 sm:my-3 iframe-wrap">
-                <Video videoSrcURL={'https://www.youtube.com/embed/700wzgTw1vE'} videoTitle={'Guy Braunstein playing'}/>
-            </div>
           </div>  
-          <div className="text-center mt-24">
+          <div className="mt-8">
             <p　className="mb-3">日本のアイドルグループ、日向坂46(ひなたざか46)さんが好きです。</p>
             <p　className="mb-3">丹生明里さん推しです !</p>
           </div>
-          <div className="flex justify-center">
-            <div className="w-46">
-              <Img fluid={data.hinata.childImageSharp.fluid}  alt="Hinatazaka"/>
-              <p className="text-sm leading-tight mt-1 px-4">初めて東京に行ったときに、麻布十番の近くにある日向坂(ひゅうがざか)にて撮影.</p>
-            </div>
+          <div className="w-56">
+            <Img fluid={data.hinata.childImageSharp.fluid}  alt="Hinatazaka"/>
+            <p className="text-sm leading-tight mt-1 px-4">初めて東京に行ったときに、麻布十番の近くにある日向坂(ひゅうがざか)にて撮影.</p>
           </div>
         </div>
       </div>
     </div>
-    </Layout>
+  </Layout>
   )
 }
 

@@ -5,10 +5,10 @@ const SiteConfig = {
   description: 'プログラミングに関する知識、技術を整理するためのアウトプットブログです',
   url: 'https://nako-tech-blog.work', // スラッシュなしのサイトURL
   siteURL: 'https://nako-tech-blog.work/', // スラッシュありのサイトURL
-  siteLanguage: 'ja', // HTMLの言語（ここでは日本語）
+  siteLanguage: 'ja', // HTMLの言語
   logo: '/images/logo1.png',
   banner: '/images/logo1.png',
-  favicon: 'static/images/logo1.png', // ファビコン
+  favicon: 'static/images/logo1.png', 
   shortName: 'なーこぉの技術ブログ', // サイトの略称、12文字以下
   author: 'なーこぉ', // schemaORGJSONLDの作成者
   themeColor: '#90cdf4',
@@ -16,7 +16,6 @@ const SiteConfig = {
   social: {
     twitter: `@0215nibunibu`,
     github: `nako0215`,
-    qitta: `nibu0215`,
   },
 };
 

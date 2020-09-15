@@ -1,12 +1,6 @@
-import React  from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons' 
+import React from 'react'
 import { useStaticQuery , graphql  } from 'gatsby'
-import { motion } from "framer-motion"
 import { ImageQuery } from "@@/gatsby-graphql"
-
-library.add(fab)
 
 const Social = () => {
   const data = useStaticQuery<ImageQuery>(graphql`
@@ -19,7 +13,6 @@ const Social = () => {
                 social {
                   twitter
                   github
-                  qitta
                 }
             }
         }
@@ -32,34 +25,29 @@ return (
 <ul className="mx-2 mt-2">
   <div className="flex justify-center space-x-8">
     {siteMetadata.social.twitter && (
-      <motion.li  whileHover={{ scale: 1.4 }} >
+      <li className="hover:scale-150">
         <a
           href={`https://twitter.com/${siteMetadata.social.twitter}`}
-          target="_blank"  rel="noopener noreferrer"  
+          target="_blank"  rel="noopener noreferrer"
         >
-          <FontAwesomeIcon icon={['fab', 'twitter']} className="text-blue-400 text-lg"/>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"  
+               className="text-blue-400 text-lg h-6 transitio duration-200 origin-center transform hover:scale-125">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
         </a>
-      </motion.li>
+      </li>
     )}
-    {/* {siteMetadata.social.github && (
-      <motion.li  whileHover={{ scale: 1.3 }} >
-        <a
-          href={`https://qiita.com/${siteMetadata.social.qitta}`}
-          target="_blank"  rel="noopener noreferrer" 
-        >
-          <FontAwesomeIcon icon={['fab', 'quora']}  className="text-red-400 text-lg"/>
-        </a>
-      </motion.li>
-    )} */}
     {siteMetadata.social.github && (
-      <motion.li  whileHover={{ scale: 1.3 }} >
+      <li>
         <a href={`https://github.com/${siteMetadata.social.github}`}
         target="_blank"  rel="noopener noreferrer" 
         >
-        <FontAwesomeIcon icon={ ['fab','github'] } className="text-indigo-400 text-lg"/>
-
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" 
+             className="text-indigo-400 text-lg h-6 transitio duration-200 origin-center transform hover:scale-125">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
         </a>
-      </motion.li>
+      </li>
     )}
   </div>
   <p className="text-blue-800 text-center tracking-wide text-sm p-1">©2020 {siteMetadata.author} </p>

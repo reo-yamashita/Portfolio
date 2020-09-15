@@ -1,5 +1,6 @@
 import React  from 'react'
 import { Link } from 'gatsby'
+import Update from '@components/update'
 
 const Header: React.FC = () => {
 
@@ -16,7 +17,8 @@ return (
           I write this blog to output my experience and knowledge about mainly frontend.
         </p>
       </div>
-      <div  className="basis">
+      <div  className="basis  flex-grow sm:pl-4 sm:pt-3">
+        <Update />
       </div>
     </div>
   </div>
