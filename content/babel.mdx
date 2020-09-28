@@ -1,0 +1,121 @@
+---
+title: 'babelのプラグインを自作する'
+subtitle: 
+date: 2020-09-20
+description: 
+learning_Point: ['babelの仕組み']
+img: 
+tags: ['plugins', 'babel']
+category: 'babel'
+---
+
+<Title>babelのプラグイン</Title>
+
+実はbabelだけでは、コードをそのまま出力するだけで、何もしていません。プラグインを設定して初めて、その設定内容に合わせてコンパイルされます。よく聞くプラグインのプリセットとしては`@babel/preset-env`があります。
+
+様々なプラグインがありますが、ほとんどの場合、プリセットや単一のプラグインを使う側だと思います。
+
+そこで、そろそろbabelの中身、仕組みについて詳しく見ておこうと思い、
+プラグインを自作しながら、その軌跡を書き記していきます...
+
+<Title>AST</Title>
+
+`AST`とは`Abstract Syntax Tree`の略で、コードの構造を抽象的に表したものです。babelはこのASTを巧みに操ってコードを変換しています。
+つまりこの`AST`の中身が分かれば、誰でも、好きなようにコードを変換できるプラグインを作れるというわけです。
+
+`AST`を見るには、`AST Explorer`という<span><a href="https://astexplorer.net/" target="_blank"  rel="noopener noreferrer">こちら</a></span> のサイトが参考になりました。
+このサイトで左側にコードを書くと右側に`AST`が表示されます。
+
+例えば、定数を宣言するコード
+
+```javascript
+const babel = 3
+```
+これを`AST`でみると(以下は見やすくするために、json表示)
+
+```json
+{
+  "type": "Program",
+  "start": 0,
+  "end": 15,
+  "body": [
+    {
+      "type": "VariableDeclaration",
+      "start": 0,
+      "end": 15,
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "start": 6,
+          "end": 15,
+          "id": {
+            "type": "Identifier",
+            "start": 6,
+            "end": 11,
+            "name": "babel"
+          },
+          "init": {
+            "type": "Literal",
+            "start": 14,
+            "end": 15,
+            "value": 3,
+            "raw": "3"
+          }
+        }
+      ],
+      "kind": "const"
+    }
+  ],
+  "sourceType": "module"
+}
+```
+
+となります。
+ここからわかることは、変(定)数宣言では、まず`VariableDeclaration`というtypeと、kind(種類)、declarationsが入ったオブジェクトがあり、
+kindは`const`、declarationsのなかに、id、initが入っており、idのtypeは`Identifier`で、名前は`babel`、initのtypeは`Literal`でvalue(値)は`3`であるということです。
+
+`AST`を確認することができたので、次はプラグインの書き方についてみていきます。
+
+<Title>babelプラグイン</Title>
+
+プラグインを作成するにあたって、<span><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md#writing-your-first-babel-plugin" target="_blank" rel="noopener noreferrer">こちら</a></span> のサイトが参考になりました。
+
+プラグインのすべてはtypesを受け取るこの関数から始まります。
+
+```bash
+export default function({ types: t }) {
+  return {
+    visitor: {
+      // visitor contents
+    }
+  }
+}
+```
+`visitor`内で`AST`のtypeに対してメソッドを定義することで、そのtypeのノードに行きつく毎にそのメソッドが呼ばれます。
+
+例として、上の変数定義の例で、変数名を変えたいと思います。
+`VariableDeclarator`のid内のtypeが`Identifier`のオブジェクト内のnameを書き換えればいけそうです！
+
+`replaceWith`というメソッドを使って、書き換えます。
+
+```bash
+module.exports = function({ types: t }) {
+  return {
+    visitor: {
+      VariableDeclarator(path) {
+        path.get('id').replaceWith(t.identifier('current'))      
+      }
+    }
+  }
+}
+```
+これをプラグインとして登録し、babelを通すと、最終的に結果は以下のようになります。
+
+```bash
+var current = 3;
+```
+実際にテストコード作ってみました！　<span><a href="https://github.com/nako0215/babel_plugin_test" target="_blank" rel="noopener noreferrer">こちら</a></span> からどうぞ。
+
+つまり、babelは`AST`を上手に操作して、コードを変換しているだけなんですね。
+
+`@babel/plugin-transform-react-jsx`や`babel-plugin-transform-vue-jsx`などの`jsx`の変換もJSXに関連するtypeや構造を`AST Explorer`を通して理解すれば思っているより簡単に作れる気がしました。
