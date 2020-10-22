@@ -52,7 +52,7 @@ const Myself: React.FC = () => {
               <h3 className="text-2xl  font-semibold text-gray-800">Handle Name</h3>
               <p className="mt-6 pr-6 tracking-wide fontpalt">
                 ハンドルネームは <span className="bg-indigo-100 px-1">なーこぉ</span> といいます。<br/>
-                2020年4月からHTML / CSS / JavaScript の勉強を始め、同年8月にこのブログを開設しました。<br/>
+                2020年4月からHTML / CSS / JavaScript の勉強を始め、同年9月にこのブログを開設しました。<br/>
                 とにかく学ぶことが大好きです。 <br/>
               </p>
             </div>

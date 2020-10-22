@@ -3,7 +3,7 @@ import Social from '@components/Social'
 
 const Footer: React.FC = () => { 
   return (
-    <footer className="mt-12">
+    <footer className="mt-6 mb-4">
       <div className="mx-auto">  
         <Social />
       </div>

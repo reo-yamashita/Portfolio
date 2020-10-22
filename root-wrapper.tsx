@@ -15,11 +15,11 @@ const BasicComponents = {
             language={child.className.replace('language-', '')}
             title={child.title}
             highlight={child.highlight}
-            live={child.live}
             light={child.light}
+            svelte={child.svelte}
           />
         )
-      }else return null
+      } else return null
   },
   p: (props: any)  => 
     <p style={{marginBottom: '1.5rem'}} {...props} />,

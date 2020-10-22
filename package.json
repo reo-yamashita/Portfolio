@@ -1,7 +1,7 @@
 {
-  "name": "nako-tech-blog.work",
+  "name": "nako",
   "private": true,
-  "description": "This is なーこぉ tech blog.",
+  "description": "なーこぉのポートフォリオ.",
   "version": "0.1.1",
   "license": "MIT",
   "scripts": {

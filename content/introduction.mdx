@@ -1,126 +1,62 @@
 ---
-title: 'GatsbyとTailwind'
+title: 'ポートフォリオについて'
 subtitle: 
-date: 2020-08-24
+date: 2020-10-22
 description: 
-learning_Point: ['Tailwindを効果的に使うための3つの工夫']
+learning_Point: ['']
 img: 
-tags: ['gatsby','tailwind']
+tags: ['gatsby']
 category: 'gatsby'
 ---
 
-`GatsbyJS`のスタイリングに`TailwindCSS`を採用した際に、3つの工夫をすると、より一層オリジナル感の強いサイトを作ることができたので紹介します。
 
-3つの工夫は以下の通り
+<Title>制作のポリシー</Title>
 
-<List list_item={['テンプレートリテラル', 'border-opacity-0 の使い時', '3項演算子']}/>
+このポートフォリオサイトを作る際に意識したことは、「とりあえずやってみる」ということです。
 
-<Title>テンプレートリテラル</Title>
+プログラミングでの挫折の原因は、降りかかる赤いエラーの雨だとよく聞きます。その障壁に立ち向かい、様々な解決策を試してみる。これはまるで、ゲームの途中に出てくる敵を、あの手この手で
+倒すのに似ています。私はそれがとても面白く感じました。
 
-テンプレートリテラルとは、ドル記号と波括弧で表される`JavaScript`の構文の一つ。
-
-具体的な使い方はこちら。
-
-```jsx live=true light=true
-() => {
-  const color = { name: '丹生ちゃん', item: '紫紫' }
-  const text = `${color.name} のサイリウムカラーは ${color.item} である。` //highlight
-　　
-　return <p>{text}</p>
-}
-```
-ここでは文字列の中に変数を入れたいときに、このテンプレートリテラルを使って入れる。
-
-これを`Tailwind`の`Utility-classes`に当てはめてみる。
-
-つまりクラス名の一部を変化させたいときに、例えば以下のように`colored`という、条件によって異なる色(文字列)を返す関数をテンプレートリテラルとして
-定義する。(<span className="text-red-600">動的にクラス名を定義</span>している)
+新しい技術、知識を学ぶことに躊躇せず、進んでみました。
 
 
-こうしておけば、コンポーネントとして再利用するときに、スタイルも変化させることができ、単調性が軽減される。
 
-```jsx
-<div className={`inline-block rounded-lg select-none leading-tight px-2 py-1 
-  border border-${colored}
-  text-xs text-${colored}
-  hover:bg-${colored} hover:text-white`}
->
-  省略
-</div>
-```
-`Tailwind`では、クラス名に一定の規則性があるため、`border-`や`text-`、`bg-`(backgroundの意)を接頭語(prefix)と捉えてみる。
+<Title>GatsbyJS</Title>
 
-すると、接頭語に続く具体的な数字、色(blue-300など)だけをテンプレートリテラルで変数として扱えば、そのクラス名が具体的にどのスタイルを表しているかという`Tailwind`が推している実用的クラス名(Utility classes)の精神を崩さすに済む。
+![Gatsby Icon](./Gatsby_Logo.png)
 
-<Caution conclution={'Tailwind 付属のPurgeCSS を使うと動的に生成されたクラス名は捨てられてしまい、使えない！'}>
-  これを回避するには、GatsbyJSのプラグイン、gatsby-plugin-purgecss を使用する。そのオプションにあるwhitelistにクラス名を登録しておくと、それらは除去されなくなる。
-  よって、動的に生成したすべてのクラス名をwhitelistに登録しておくことが必要である。
-</Caution>
+GatsbyJSはReactベースの静的サイトジェネレーターです。
+
+もともとReactにすごい興味がありました。特に仮想DOMというシステムは、フロントエンド界でもかなり盛り上がりを見せてましたので、その流行に乗ってみました。
+
+GatsbyJSを知ったのは、<a href="https://jamstack.org/generators/" target="_blank"  rel="noopener noreferrer">静的サイトジェネレーター(SSG)</a> の一覧表を見ていた時です。 ドキュメントの充実さ、コミュニティの大きさの観点からGatsbyJSを選びました。また、GraphQLが標準搭載されており、ブログ作成、管理が容易です。
 
 
-<Title>border-opacity-0 の使い時</Title>
+<Title>Tailwind によるスタイリング</Title>
 
-`border-opacity-0`とは`Tailwind`のクラス名の一つで、`border`の`opacity`を`0`にするという意味だ。
+最初はstyled-componentやEmotionを使ってスタイリングしていました。後にTailwindを知り(CSSフレームワークというものを知り)、一度Tailwindを使って
+スタイリングしてみたところ、こちらを採用しました。Tailwindの書き方や機能などを実際に書いて使ってみたかったからです。
 
-`border`の`opacity`を`0`にさせたいときっていつだろう。
+CSSの自由が効かない分、やはり素早くスタイリングできました。レスポンシブも簡単に設定、適応できるので便利です。
 
-ここで、具体的に以下のようなボタンを作ってみた。
+スタイリングに特にこだわりはないけど、かっこよくしたいというときに使えるなと感じました。
 
-`hover`すると`background-color`と`color`が変わるボタンだ。
+<Title>Netlify で自動ホスティング </Title>
 
-```jsx  live=true light=true
-<div className={`
-  inline-block rounded-lg select-none px-2 py-1 
-  text-sm text-blue-400
-  border border-blue-400 
-  hover:bg-red-400 hover:text-white hover:border-opacity-0`}> //highlight
-  <p>おひさま</p>
-</div>   
-```
-このとき、`hover`したときに、`border`の色も変える必要があるが、方法は二つ。
+![Netlify Icon](./Netlify.png)
 
-<List list_item={['背景と同じ色にして同化させる', 'borderのopacityを0にする']}/>
+Netlifyではgithubと連帯できるので、gitにプッシュするだけで自動的にNetlifyを介して配信されます。
+通常利用では無料、初期設定も簡単なのでNetlifyにしました。
 
-注意点として、`hover`したときに、`border`の幅を変えるとその分、がたがたするのでこれは使えない。
+更新作業がそんなにないブログとかだと、これで十分かなと思います。
 
-さて、ひとつめの方法は一見スマートに見えるが、`reusability`(再利用性)を考えると、あまり良いとはいえない。
+あとは、Gatsby自体のビルドが重いので、それも少し改善されると良いなと思います。
 
-なぜならば、このボタンというコンポーネントが、背景の色に依存してしまうからだ。<br/>
-背景の色が変更になると、ボタンコンポーネントのクラス名も変更しなければならなくなる。
+<Title>GitHubのレポジトリ</Title>
 
-ふたつめの`border-opacity-0`を用いると、ボタンコンポーネント内でスタイルが完結するので、再利用性を保てる。
+実はこのサイトはTypeScriptで作成しました。TypeScriptはまだまだ勉強中で、その恩恵を100％受けているわけではありませんが、
+とりあえず使って見ようという精神で実装しました。
 
-<Title>3項演算子</Title>
+このポートフォリオサイトはこれからもっと良くなるよう改善していく予定です。
 
-3項演算子はif文を簡単に再現できる演算子である。
-
-フック`useState`と一緒に使うと簡単にクリックイベントとスタイルの変化をつなげることができる。
-
-さきほどのボタンにクリックイベントを加えたものを具体例として以下に示そう。
-
-```jsx live=true light=true
-() => {
-const [state, setState] = React.useState(false)
-  return(
-  <div className="flex justify-center space-x-3">
-    <div className={`
-      inline-block rounded-lg select-none cursor-pointer px-2 py-1 
-      text-sm text-blue-400
-      border border-blue-400 
-      hover:bg-red-400 hover:text-white hover:border-opacity-0`}
-      onClick={ () => {setState(!state)}}  
-      >
-      <p>時刻</p>
-    </div> 
-    <div className={`
-      inline-block rounded-lg select-none p-1 text-white text-sm
-      bg-${ state ? 'red-400': 'blue-400'}`}>   //highlight
-      <p>現在</p>
-    </div>
-  </div>
-  )
-}
-```
-ハイライト行では、`state`が`true`か`false`かによって、背景色が変化する条件文が3項演算子によって表現されている。
-
-if文の条件式が単純な場合や、条件数が少ない場合に簡単に導入できる。
+<a href="https://github.com/nako0215/new-nako-blog" target="_blank"  rel="noopener noreferrer">リポジトリはこちら</a>

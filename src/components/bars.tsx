@@ -60,7 +60,7 @@ const SolidBar = ({ children }: TypeSolidBar) => {
 const Title = ({ children }: TypeTitle) => {
   return(
   <div className="select-none my-8 border-l-4 border-indigo-800">
-    <p className="text-2xl text-blue-900 tracking-wide pl-3">{children}</p>
+    <p className="text-2xl text-blue-900 tracking-wide pl-3 font-medium">{children}</p>
   </div>
 )}
 

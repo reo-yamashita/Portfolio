@@ -1,14 +1,7 @@
 import React , { useState ,useCallback} from 'react'
-import Highlight, { defaultProps, Prism }  from 'prism-react-renderer'
-import theme   from '@@/config/prismStyle'
-import nightOwl from 'prism-react-renderer/themes/nightOwl';
+import Highlight, { Prism }  from 'prism-react-renderer'
+import github from '@/css/prism-style.ts';
 import copyToClipboard from '@@/utils/copy-board'
-import {
-  LiveProvider,
-// LiveEditor,
-  LiveError,
-  LivePreview
-} from 'react-live'
 import { TypeCode } from '@@/allTypes/gatsby-type';
 
 const range = (start: number, end: number) => { 
@@ -69,8 +62,8 @@ const Code = ({
     language, 
     title, 
     highlight, 
-    light ,
-    live,
+    light, 
+    svelte, 
   }: TypeCode) => {
     
 const [value, setValues] = useState<[string, boolean]>(['Copy', false]) 
@@ -84,10 +77,11 @@ const [value, setValues] = useState<[string, boolean]>(['Copy', false])
 
 return (
 <Highlight
- theme={theme}
+ theme={github}
  Prism={Prism}
   code={codeString}
-  language={language}
+  //@ts-ignore
+  language={language}  
 >
   {({className,
     tokens,
@@ -103,21 +97,21 @@ return (
           </div>
         )}
       </div>
-      <div className={`${className} gatsby-highlight code-surface-spread  bg-orange-100 relative`} data-language={language} >
-        <pre  className={`language-${language}`}  >
+      <div className={`${className} gatsby-highlight code-surface-spread bg-white relative shadow-inner rounded-md`} data-language={language} >
+        <pre  className={ svelte ? `language-svelte` : `language-${language}`}  >
           <div className="px-0 pt-10 pb-6 overflow-auto scrolls">
             <button 
               onClick={handleClick} 
               className={`${title} : ${value[0]} to clipboard mx-4  focus:outline-none
-                focus absolute top-0 right-0 text-orange-700 mt-1`}
+                focus absolute top-0 right-0 text-indigo-300 mt-1`}
               disabled={value[1]}
             >
-              <p className="rounded-lg hover:bg-indigo-700 hover:text-white font-sans text-sm py-1 px-2 
+              <p className="rounded-lg hover:bg-indigo-100 hover:text-indigo-800 font-sans text-sm py-1 px-2 
               transition duration-300 ease-in-out">
                 {value[0]}
               </p>
             </button>
-            <div className="font-mono text-sm sm:text-sm text-blue-900 tracking-normal px-6 float-left block min-w-full">
+            <div className="code_font text-sm sm:text-sm text-blue-900 tracking-normal px-6 float-left block min-w-full ">
               {tokens.map((line, index) => {
                 const lineProps = getLineProps({ line, key: index })  
 
@@ -139,20 +133,10 @@ return (
           </div>
         </pre>
       </div>
-      {live 
-      ? 
-      <div className="code-surface-spread rounded-b-lg border-b border-r border-l border-orange-300  p-2 mb-8">
-        <LiveProvider code={codeString.replace( /\/\/h(.*)/g , '' )} scope={{Highlight, defaultProps, nightOwl }}>
-          <LiveError />
-          <div className="my-3 mx-4">
-            <LivePreview />
-          </div>
-        </LiveProvider> 
-      </div>
-      : null}
     </div>
   )}}
 </Highlight>
 )}
 
 export default Code
+

@@ -4,10 +4,11 @@
 
 code {
   @apply m-1 text-gray-800 bg-blue-100 p-1;
+  font-family: 'Noto Sans JP';
 }
 
 .gatsby-highlight pre[class*="language-"]::before {
-  @apply absolute ml-10 px-2 uppercase tracking-wide rounded-b font-light text-xs
+  @apply absolute ml-10 px-2 uppercase tracking-wider rounded-b font-light text-xs
 }
 
 .transition_ease_in {

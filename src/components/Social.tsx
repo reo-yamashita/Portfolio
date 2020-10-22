@@ -50,7 +50,7 @@ return (
       </li>
     )}
   </div>
-  <p className="text-blue-800 text-center tracking-wide text-sm p-1">©2020 {siteMetadata.author} </p>
+  <p className="text-blue-800 text-center tracking-wide text-xs p-1">©2020 {siteMetadata.author} </p>
 </ul>
 )}
 

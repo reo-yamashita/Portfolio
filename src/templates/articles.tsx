@@ -40,7 +40,7 @@ return (
     <nav className="p-3"> 
       <Category/>
     </nav>
-    <div className="p-2 sm:p-4 max-w-3xl mx-auto"> 
+    <div className="p-2 sm:p-4 max-w-2xl mx-auto"> 
       <div className="m-3">
         <h2 className="select-none inline-block text-2xl sm:text-3xl font-bold tracking-wide ">
           {data.post.frontmatter.title}
@@ -51,7 +51,7 @@ return (
           </p>
         </div>
       </div>
-      <div className="p-3 text-sm sm:text-base text-gray-800"> 
+      <div className="p-3 text-sm sm:text-base text-black"> 
         <MDXRenderer>
           {data.post.body} 
         </MDXRenderer>

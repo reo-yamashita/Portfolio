@@ -65,11 +65,11 @@ export type TypeLayout = {
 
 export type TypeCode = {
   codeString:string;
-  language: string; 
-  title:string; 
-  highlight:string; 
-  light :boolean;
-  live:boolean;
+  language?: string; 
+  title?:string; 
+  highlight?:string; 
+  light? :boolean;
+  svelte?: boolean;
 }
 
 export type TypePre = {
@@ -80,8 +80,8 @@ export type TypePre = {
      children?: string;
      title?: string;
      highlight?: string
-     live?: boolean;
      light?: boolean;
+     svelte?: boolean;
    }
   }
  }

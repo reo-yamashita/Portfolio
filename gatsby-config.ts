@@ -69,11 +69,12 @@ const config: GatsbyConfig = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 320,
               linkImagesToOriginal: false
             },
           },
         ],
+        plugins: [ `gatsby-remark-images` ],
       },
     },  
     {

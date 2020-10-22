@@ -12,6 +12,7 @@ body,h1, h2, h3, h4, p {
   font-style: normal;
   font-weight: 400;
   border-bottom: initial;
+  line-height: 2rem;
 }
 
 a {
@@ -23,18 +24,18 @@ a {
 
 p {
   opacity: .87;
-  line-height: 1.8;
 }
 
 h2 {
-  color: #4a5568;
+  color: #3a4250;
 }
 
 li {
   margin-bottom: 0;
 }
+
 .layout_background-color {
-  background-color: #f5fbff;
+  background-color: #ffffff;
 }
 
 .basis {
@@ -42,19 +43,6 @@ li {
 }
 .top_posts_basis {
   flex-basis: 420px;
-}
-
-.maxWidth90rem {
-  max-width: 75rem;
-
-}
-
-.colorPost {
-  &:hover {
-    .colored_post {
-      color:rgb(172, 158, 182);
-    }
-  }
 }
 
 .fontpalt {
@@ -96,27 +84,13 @@ li {
   animation: fadeInRight .35s ease-in-out 15ms both;
 }
 
-@mixin pin($name: 'Recently Update'){
-  max-width:310px;
-  &:before {
-    content: $name;
-    color: rgb(25, 23, 31);
-    font-weight: 500;
-    position:absolute;
-    top: -1rem;
-    left:1.5rem;
-    letter-spacing:.05rem;
-    padding:.3rem .8rem;
-  }
-}
-
-.pin_tags {
-  @include pin();
-}
-
 .code-surface-spread {
   margin-left: -1.5rem;
   margin-right: -1.5rem;
+}
+
+.code_font {
+  font-family: 'Fira Mono', monospace;;
 }
 
 .gatsby-highlight pre[class="language-css"]::before {
@@ -142,6 +116,19 @@ li {
   background: rgb(230, 99, 149);
   color: white;
 }
+.gatsby-highlight pre[class="language-bash"]::before {
+  content: "bash";
+  background: #d2d1d3ab;
+}
+.gatsby-highlight pre[class="language-html"]::before {
+  content: "html";
+  background: #e6baffab;
+}
+.gatsby-highlight pre[class="language-svelte"]::before {
+  content: "svelte";
+  color: white;
+  background: #ff4a2aab;
+}
 
 code {
   margin-left: 0.3rem;
@@ -149,11 +136,11 @@ code {
 }
 
 .highlight-line {
-  background-color: rgba(223, 228, 243, 0.589);
+  background-color: rgba(239, 243, 255, 0.589);
   margin-left: -1.5rem;
   margin-right: -1.5rem;
   padding-left: 1.25rem;
   padding-right: 1.5rem;
   display: block;
-  border-left: 0.3em solid rgb(86, 45, 197);
+  border-left: 0.3em solid rgb(172, 112, 221);
 }
