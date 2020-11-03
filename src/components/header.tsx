@@ -12,7 +12,7 @@ return (
           <h1  className="font-extrabold tracking-wide sm:text-5xl leading-snug hover:text-indigo-800 text-4xl">Welcome to <span className="inline-block">My Portfolio</span></h1>
         </Link>
         <p className="py-1 sm:pl-3">
-        なーこぉのポートフォリオです。JavaScriptフレームワークやマーケティングについて学んでいます。
+        なーこぉのポートフォリオです。プログラミング / IT / マーケティング / 経営について学んでいます。
         </p>
       </div>
     </div>

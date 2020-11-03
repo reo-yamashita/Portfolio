@@ -30,7 +30,6 @@ const config: GatsbyConfig = {
       options: {
         tailwind: true,
         whitelist: [...white_classes, 'hidden', 'block'],
-        ignore: [ './content/blog/**/*.md*',],
       },
     },
     {

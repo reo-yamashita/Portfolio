@@ -52,7 +52,7 @@ const Myself: React.FC = () => {
               <h3 className="text-2xl  font-semibold text-gray-800">Handle Name</h3>
               <p className="mt-6 pr-6 tracking-wide fontpalt">
                 ハンドルネームは <span className="bg-indigo-100 px-1">なーこぉ</span> といいます。<br/>
-                2020年4月からHTML / CSS / JavaScript の勉強を始め、同年9月にこのブログを開設しました。<br/>
+                2020年4月から本格的にJavaScript等の勉強を始め、同年9月にこのサイトを開設しました。<br/>
                 とにかく学ぶことが大好きです。 <br/>
               </p>
             </div>
@@ -70,8 +70,10 @@ const Myself: React.FC = () => {
             <div className="max-w-sm  flex-grow">
               <h3 className="text-2xl  font-semibold text-gray-800">Skill</h3>
               <p className="mt-6 pr-6 fontpalt tracking-wide">
-                React周りが得意です。<br/>
-                JavaScript / HTML / CSS (SASS) 周辺も得意です。 <br/>
+                JavaScript / HTML / CSS (SASS)  の基礎的な部分は扱えます。<br/>
+                分からないことがあった時や、上手くコードが動かないときの調査力(検索力)とグリットは人一倍自信があります。
+              </p>
+              <p className="mt-6 pr-6 fontpalt tracking-wide">
                 このブログはGatsbyJSのテンプレートテーマを使用せずに、デザイン、スタイリングから構築、デプロイまですべて<span className="bg-indigo-100 px-1">なーこぉ</span>が作りました。
               </p>
               <div className="mt-4 text-red-700 transition-all duration-200 py-1 px-3
@@ -96,7 +98,8 @@ const Myself: React.FC = () => {
                   <p>jQuery</p>
                   <span className="text-indigo-800"><p>React</p></span>
                   <p>Vue</p>
-                  <p>Svelte</p>
+                  <p>git</p>
+                  <p>firebase</p>
                 </div>
               </div>
             </div>
@@ -117,7 +120,7 @@ const Myself: React.FC = () => {
                       </li>
                   )})}
                 </ul>
-                <div className="p-2">
+                <div className="mt-6">
                   <p className="mb-3">小学3年生のころからヴァイオリンを習っています。</p>
                   <p className="mb-3">マーラー、ベートーベン、パガニーニなどをよく聴きます。</p>
                   <p className="mb-3">ベルリンフィルの元コンサートマスター、ガイ・ブランシュタイン(Guy Braunstein)さんの演奏が特に好きです。</p>

@@ -85,22 +85,7 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions 
 })
 }
 
-export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ stage, loaders, actions }) => {
-
-  if (stage === 'build-html') {
-    actions.setWebpackConfig(
-      {
-        module: {
-          rules: [
-            {
-              test: /webfontloader/,
-              use: loaders.null()
-            }
-          ]
-        }
-      }
-    );   
-  }
+export const onCreateWebpackConfig: GatsbyNode["onCreateWebpackConfig"] = ({ actions }) => {
   
   actions.setWebpackConfig({
     node: {

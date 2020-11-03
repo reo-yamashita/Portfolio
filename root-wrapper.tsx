@@ -42,7 +42,7 @@ const BarsComponents = {
   Caution, 
 }
 
-const Root: GatsbyBrowser["wrapRootElement"]  = ({ element }) => {
+const Root: GatsbyBrowser["wrapRootElement"] = ({ element }) => {
 
   return (
   <MDXProvider components={{...BarsComponents, ...BasicComponents}} >

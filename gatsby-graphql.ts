@@ -16,23 +16,12 @@ export type Scalars = {
   JSON: any;
 };
 
-
-
-
-
-
-
-
-
-
-
 export type BooleanQueryOperatorInput = {
   eq?: Maybe<Scalars['Boolean']>;
   ne?: Maybe<Scalars['Boolean']>;
   in?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
-
 
 export type DateQueryOperatorInput = {
   eq?: Maybe<Scalars['Date']>;
