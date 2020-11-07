@@ -13,6 +13,7 @@ const config: GatsbyConfig = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-typescript`,
     // {
     //   resolve: "gatsby-plugin-graphql-codegen",
     //   options: {

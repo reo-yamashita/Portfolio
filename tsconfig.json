@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "target": "esnext",
-    "module": "CommonJS",    
-    "baseUrl": "./",
-    "lib": ["dom"],    
+    "jsx": "preserve",
+    "lib": ["dom"],   
+    "baseUrl": "./",  
     "paths": {
       "@/*": ["./src/*"],
       "@@/*": ["./*"],
@@ -13,17 +14,11 @@
       "@utils/*": ["./utils/*"],
       "@static/*": ["./static/*"],
     },   
-    "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,  
-    "noUnusedLocals": true,  
-    "noImplicitReturns": true,  
     "noUnusedParameters": true,  
-    "forceConsistentCasingInFileNames": true,   
-    "resolveJsonModule": true,  
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "noImplicitAny": true
   },  
   "includes": [
     "src/**/*",

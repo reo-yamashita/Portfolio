@@ -1,13 +1,13 @@
 const SiteConfig = {
   pathPrefix: '/',
-  title: 'なーこぉのログ', // タイトル
-  titleAlt: 'なーこぉのログ', // JSONLDのためのタイトル
+  title: 'なーこぉのログサイト', // タイトル
+  titleAlt: 'なーこぉ', // JSONLDのためのタイトル
   description: 'なーこぉのポートフォリオサイトです',
   url: 'https://nako-tech-blog.work', // スラッシュなしのサイトURL
   siteURL: 'https://nako-tech-blog.work/', // スラッシュありのサイトURL
   siteLanguage: 'ja', // HTMLの言語
   logo: '/images/logo1.png',
-  banner: '/images/logo1.png',
+  banner: '/images/nako2.png',
   favicon: 'static/images/logo1.png', 
   shortName: 'なーこぉのログ', // サイトの略称、12文字以下
   author: 'なーこぉ', // schemaORGJSONLDの作成者
