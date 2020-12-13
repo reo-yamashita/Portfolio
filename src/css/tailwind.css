@@ -8,7 +8,7 @@ code {
 }
 
 .gatsby-highlight pre[class*="language-"]::before {
-  @apply absolute ml-10 px-2 uppercase tracking-wider rounded-b font-light text-xs
+  @apply absolute ml-10 px-2 uppercase tracking-wider rounded-b font-light text-xs shadow-md
 }
 
 .transition_ease_in {

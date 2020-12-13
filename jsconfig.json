@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",  
+    "paths": {
+      "@/*": ["./src/*"],
+      "@@/*": ["./*"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@templates/*": ["./src/templates/*"],
+      "@utils/*": ["./utils/*"],
+      "@static/*": ["./static/*"],
+    },   
+  },  
+  "includes": [
+    "src/**/*",
+    "config",
+    "alltypes",
+    "utils",
+  ],         
+  "exclude": [
+    "node_modules",
+     "public", 
+     ".cache", 
+     "static",
+     "content",
+     ".env",
+     ".gitignore",
+     ".prettierignore",
+    ]
+}
