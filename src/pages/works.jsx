@@ -8,7 +8,7 @@ const Contact = () => {
     <Layout>
       <SEO
       title={'Works'}
-      desc={'ポートフォリオ一覧'}
+      desc={'works list'}
       pathname={'/works/'}
       article={false}
      />

@@ -17,7 +17,7 @@ return (
   <Layout location={'top'}>
       <SEO
         title={'Home'}
-        desc={'なーこぉの技術ブログTopページ'}
+        desc={'portfolio top page'}
         pathname={'/'}
         article={false}
       />

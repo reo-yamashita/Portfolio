@@ -30,7 +30,7 @@ return (
   <Layout >
     <SEO
       title={data.post.frontmatter.title}
-      desc={`${data.post.frontmatter.learning_Point}`}
+      desc={data.post.frontmatter.title}
       pathname={`/blog${data.post.fields.slug}`}
       article
     />

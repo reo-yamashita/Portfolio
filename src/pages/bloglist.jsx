@@ -36,7 +36,7 @@ return (
   <Layout>
     <SEO
       title={'Article'}
-      desc={'技術ブログページ'}
+      desc={'article list'}
       pathname={'/bloglist/'}
       article
     />

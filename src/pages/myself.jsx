@@ -35,7 +35,7 @@ const Myself = () => {
   <Layout>
       <SEO
       title={'About me'}
-      desc={'自己紹介'}
+      desc={'introduction myself'}
       pathname={'/myself/'}
       article={false}
      />
