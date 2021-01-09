@@ -7,8 +7,13 @@
   }
 }
 
-body,h1, h2, h3, h4, p {
-  font-family: 'Noto Sans JP';
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  font-family: "Noto Sans JP";
   font-style: normal;
   font-weight: 400;
   border-bottom: initial;
@@ -23,7 +28,7 @@ a {
 }
 
 p {
-  opacity: .87;
+  opacity: 0.87;
 }
 
 h2 {
@@ -54,17 +59,17 @@ li {
 .scrolls {
   &::-webkit-scrollbar {
     display: block;
-    height:7px;
+    height: 7px;
   }
-  
+
   &::-webkit-scrollbar-track {
     border-radius: 10px;
-    height:4px;
+    height: 4px;
   }
-  
+
   &::-webkit-scrollbar-thumb {
-    background-color:#bed7f8;
-    height:4px;
+    background-color: #bed7f8;
+    height: 4px;
     border-radius: 10px;
   }
 }
@@ -80,8 +85,8 @@ li {
   }
 }
 
-.fadeIn_animation{
-  animation: fadeInRight .35s ease-in-out 15ms both;
+.fadeIn_animation {
+  animation: fadeInRight 0.35s ease-in-out 15ms both;
 }
 
 .code-surface-spread {
@@ -90,7 +95,7 @@ li {
 }
 
 .code_font {
-  font-family: 'Fira Mono', monospace;;
+  font-family: "Fira Mono", monospace;
 }
 
 .gatsby-highlight pre[class="language-css"]::before {

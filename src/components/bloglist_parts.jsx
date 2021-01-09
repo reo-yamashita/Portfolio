@@ -1,42 +1,40 @@
 import React from "react"
-import { Link } from 'gatsby'
-import { Colors } from '@@/utils/colors'
+import { Link } from "gatsby"
+import { Colors } from "@/utils/colors"
 
 const BlogList_Parts = ({ node }) => {
-
   return (
-    <article>
-      <Link to={`/blog${node.fields.slug}`}>
-        <h2 className="text-lg sm:text-2xl font-bold tracking-wide max-w-2xl mb-3">
-          {node.frontmatter.title} 
-        </h2> 
-      </Link>
-        <div className="pt-0 max-w-2xl">
-          <div className="flex items-center leading-none">
-            <p className="text-sm select-none text-teal-600 pr-3">
-              {node.frontmatter.date}
-            </p>
-            <ul className="space-x-2 flex items-center">
-            {node.frontmatter.tags.map( (tag) => {
-              let colored =  Colors(tag)
+    <article className="max-w-lg">
+      <div className="flex items-center gap-2 mb-1">
+        <p className="text-sm select-none text-blue-400 opacity-80">
+          {node.frontmatter.date}
+        </p>
+        <ul className="space-x-2 flex items-center">
+          {node.frontmatter.tags.map((tag) => {
+            let colored = Colors(tag)
 
-              return(
-                <li key={tag}>
-                  <Link to={`/tags/${tag}`}>
-                    <div className={`inline-block rounded-lg select-none leading-tight px-2 py-1 border border-${colored} text-xs  text-${colored} hover:bg-${colored} hover:text-gray-100`}
-                    >
-                      {tag}
-                    </div>
-                  </Link>
-                </li>
-              )
-            })}
-            </ul>
-          </div>
-          <p className="mt-2 tracking-wide">
-            {node.frontmatter.learning_Point}
-          </p>
-        </div>
+            return (
+              <li key={tag}>
+                <Link to={`/tags/${tag}`}>
+                  <div
+                    className={`rounded-lg select-none leading-tight text-xs text-white px-2 py-1 ${colored.bg} flex justify-center items-center hover:opacity-75 transition-opacity`}
+                  >
+                    {tag}
+                  </div>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+      <Link to={`/blog${node.fields.slug}`}>
+        <p className="text-lg sm:text-2xl font-bold tracking-wide mb-3">
+          {node.frontmatter.title}
+        </p>
+      </Link>
+      <div>
+        <p className="tracking-wide">{node.frontmatter.learning_Point}</p>
+      </div>
     </article>
   )
 }

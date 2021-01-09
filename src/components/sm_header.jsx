@@ -1,46 +1,53 @@
-import React, { useState } from 'react';
-import { Link } from 'gatsby';
+import React, { useState } from "react"
+import { Link } from "gatsby"
+import DonutLargeIcon from "@material-ui/icons/DonutLarge"
 
 export const index = [
-  {to: '/',title: 'Home'},
-  {to: '/bloglist', title: 'Blog'},
-  {to: '/works', title: 'Works'},
-  {to: '/myself', title: 'Myself'}
+  { to: "/", title: "Home" },
+  { to: "/bloglist", title: "Blog" },
+  { to: "/works", title: "Works" },
+  { to: "/myself", title: "Myself" },
 ]
 
 const SmHeader = () => {
-const [state, toggle] = useState(false)
+  const [state, toggle] = useState(false)
 
-const indexItem = state ? 'block' : 'hidden'
-const open = state ? 'open': null
+  const indexItem = state ? "block" : "hidden"
 
-return (
-<div className="pt-2 px-8 bg-lightblue-700">
-  <div className="max-w-3xl mx-auto ">
-    <div className="relative">
-      <div className="flex justify-end p-1 sm:hidden transition duration-500"> 
-         <div onClick={() => toggle(!state)} className={`burger burger-squeeze ${open}`}>
-           <div className="burger-lines" />
-         </div>
-      </div> 
-      <div className={`sm:space-x-6 sm:flex mb-1 ${indexItem} transition duration-500 text-center space-y-8 sm:space-y-0`}>
-        { index.map( (item) => {
-          return(
-            <div key={`${item.title}`}>  
-              <Link to={`${item.to}`}>
-                <p className="text-gray-50 font-normal hover:text-gray-200">
-                  {item.title}
-                </p>
-              </Link>
+  return (
+    <div className="py-1 px-8 shadow-md bg-gradient-to-r from-blue-300 via-blue-300">
+      <div className="max-w-3xl mx-auto ">
+        <div className="relative">
+          <div className="flex justify-end p-1 sm:hidden transition duration-500">
+            <div
+              aria-hidden="true"
+              onClick={() => toggle(!state)}
+              className={`cursor-pointer transform ${
+                state ? "rotate-180" : "rotate-0"
+              } transition-transform`}
+            >
+              <DonutLargeIcon className="text-blue-200" fontSize="large" />
             </div>
-          )
-        })}
+          </div>
+          <div
+            className={`space-y-4 sm:space-y-0 sm:space-x-8 sm:flex ${indexItem} text-center transition`}
+          >
+            {index.map((item) => {
+              return (
+                <div key={`${item.title}`}>
+                  <Link to={`${item.to}`} onClick={() => toggle(false)}>
+                    <p className="text-white hover:text-gray-100">
+                      {item.title}
+                    </p>
+                  </Link>
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-)
+  )
 }
 
 export default SmHeader
-

@@ -1,10 +1,9 @@
-const  {SiteConfig } = require('./src/config/site')
-const { white_classes } = require('./utils/white_classes')
+const { SiteConfig } = require("./src/config/site")
 const path = require("path")
 
 module.exports = {
   siteMetadata: {
-   ...SiteConfig
+    ...SiteConfig,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -13,18 +12,16 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-material-ui`,
-    `gatsby-plugin-resolve-src`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `utils/typography`,
+        pathToConfigModule: `src/utils/typography`,
       },
     },
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         tailwind: true,
-        whitelist: [...white_classes, 'hidden', 'block'],
       },
     },
     {
@@ -36,7 +33,7 @@ module.exports = {
         start_url: SiteConfig.pathPrefix,
         background_color: SiteConfig.backgroundColor,
         theme_color: SiteConfig.themeColor,
-        display: 'standalone',
+        display: "standalone",
         icon: SiteConfig.favicon,
       },
     },
@@ -44,15 +41,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'content' ,
+        name: "content",
         path: path.resolve(__dirname, "content"),
-      }
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: path.resolve(__dirname, "static"),
-        name: 'images',
+        name: "images",
       },
     },
     {
@@ -64,13 +61,13 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 320,
-              linkImagesToOriginal: false
+              linkImagesToOriginal: false,
             },
           },
         ],
-        plugins: [ `gatsby-remark-images` ],
+        plugins: [`gatsby-remark-images`],
       },
-    },  
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -81,5 +78,5 @@ module.exports = {
         pageTransitionDelay: 0,
       },
     },
-  ]
+  ],
 }

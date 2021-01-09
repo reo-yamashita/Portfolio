@@ -1,10 +1,11 @@
-const colors = require('tailwindcss/colors')
+const colors = require("tailwindcss/colors")
 
 module.exports = {
   purge: false,
   theme: {
     colors: {
       // Build your palette here
+      white: colors.white,
       gray: colors.coolGray,
       red: colors.red,
       yellow: colors.amber,
@@ -22,23 +23,23 @@ module.exports = {
     },
     extend: {},
     screens: {
-      'sm': '640px',
+      sm: "640px",
       // => @media (min-width: 640px) { ... }
 
-      'md': '768px',
+      md: "768px",
       // => @media (min-width: 768px) { ... }
 
-      'lg': '1024px',
+      lg: "1024px",
       // => @media (min-width: 1024px) { ... }
 
-      'xl': '1200px',
+      xl: "1200px",
       // => @media (min-width: 1280px) { ... }
     },
   },
   variants: {
-    borderColor: ['responsive', 'hover', 'focus'],
-    borderWidth: ['responsive', 'hover', 'focus'],
-    fontSize: ['responsive', 'hover', 'focus'],
+    borderColor: ["responsive", "hover", "focus"],
+    borderWidth: ["responsive", "hover", "focus"],
+    fontSize: ["responsive", "hover", "focus"],
   },
   plugins: [],
 }
